@@ -15,19 +15,19 @@
   ],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
+  "hostRules": [
+    {
+      "hostName": "repo.packagist.com",
+      "hostType": "packagist",
+      "encrypted": {
+        "username": "***REMOVED***",
+        "password": "***REMOVED***"
+      }
+    }
+  ],
   "labels": [
     "dependencies"
   ],
-  "php": {
-    "labels": [
-      "php"
-    ]
-  },
-  "js": {
-    "labels": [
-      "javascript"
-    ]
-  },
   "patch": {
     "automerge": true,
     "labels": [
@@ -42,7 +42,7 @@
   },
   "major": {
     "labels": [
-      "\uD83D\uDCA3 MAJOR"
+      "\uD83D\uDCA3 major"
     ]
   },
   "packageRules": [
