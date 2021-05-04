@@ -1,30 +1,69 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":semanticCommits", ":preserveSemverRanges"],
-  "enabledManagers": ["composer", "npm", "github-actions"],
+  "extends": [
+    "config:base",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    ":preserveSemverRanges",
+    ":separateMultipleMajorReleases",
+    ":rebaseStalePrs"
+  ],
+  "enabledManagers": [
+    "composer",
+    "npm",
+    "github-actions"
+  ],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
+  "php": {
+    "labels": [
+      "php"
+    ]
+  },
+  "js": {
+    "labels": [
+      "javascript"
+    ]
+  },
+  "patch": {
+    "automerge": true,
+    "labels": [
+      "patch"
+    ]
+  },
+  "minor": {
+    "automerge": true,
+    "labels": [
+      "minor"
+    ]
+  },
+  "major": {
+    "labels": [
+      "\uD83D\uDCA3 MAJOR"
+    ]
+  },
   "packageRules": [
     {
-      "matchManagers": ["composer"],
-      "labels": ["php"]
+      "description": "Group PHPStan packages",
+      "groupName": "phpstan packages",
+      "matchPackagePatterns": [
+        "^phpstan\\/"
+      ]
     },
     {
-      "matchManagers": ["npm"],
-      "labels": ["javascript"]
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "labels": ["github-actions"]
-    },
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["major"],
-      "labels": ["\uD83D\uDCA3 MAJOR"]
+      "description": "Group ESLint packages",
+      "groupName": "eslint packages",
+      "matchPackageNames": [
+        "eslint",
+        "@babel/eslint-parser",
+        "@yproximite/eslint-config-generator"
+      ],
+      "matchPackagePatterns": [
+        "^eslint-plugin\\/"
+      ]
     }
   ]
 }
