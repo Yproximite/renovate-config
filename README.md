@@ -4,13 +4,27 @@ Configuration globale de [Renovate](https://docs.renovatebot.com/) pour nos proj
 
 ## Installation sur un nouveau projet
 
-Cette configuration globale est en réalité déjà effective pour tous les projets, car c'est une [configuration "au niveau de l'organisation"](https://docs.renovatebot.com/config-presets/#organization-level-presets).
+À la racine d'un projet, créer le fichier `renovate.json` : 
 
-En revanche, il est préférable [d'être explicite plutôt qu'implicite](https://www.python.org/dev/peps/pep-0020), et donc de configurer Renovate au niveau du projet en créant un fichier `renovate.json` :
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>Yproximite/renovate-config"]
+  "extends": ["github>Yproximite/renovate-config"],
+  "hostRules": [
+    {
+      "hostName": "repo.packagist.com",
+      "hostType": "packagist",
+      "encrypted": {
+        "username": "<username chiffré>",
+        "password": "<password chiffré>"
+      }
+    }
+  ],
 }
-
 ```
+
+## Liens utiles
+
+- [Configurer Renovate](https://docs.renovatebot.com/configuration-options/)
+- [Dashboard Renovate](https://app.renovatebot.com/dashboard)
+- [Chiffrer des secrets pour Renovate](https://app.renovatebot.com/encrypt)

@@ -15,16 +15,6 @@
   ],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
-  "hostRules": [
-    {
-      "hostName": "repo.packagist.com",
-      "hostType": "packagist",
-      "encrypted": {
-        "username": "***REMOVED***",
-        "password": "***REMOVED***"
-      }
-    }
-  ],
   "labels": [
     "dependencies"
   ],
